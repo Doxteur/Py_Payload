@@ -2,7 +2,10 @@ import time
 import socket 
 import sys 
 import os 
+import atexit
 
+def exit_handler():
+    conn.send(("exit").encode())
 
 data = None
 # Initialize s to socket 
@@ -24,6 +27,7 @@ s.listen()
   
 # accepting the incoming connections 
 conn, addr = s.accept() 
+
   
 print(addr, "is connected to server") 
   
